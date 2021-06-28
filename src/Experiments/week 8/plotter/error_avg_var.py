@@ -4,7 +4,7 @@ import pandas as pd
 
 
 def main():
-    data_mean = pd.read_csv('../results/bs_var_avg_seed.csv')
+    data_mean = pd.read_csv('../results/bs_var_avg_seed_full.csv')
     data_mean = data_mean.values.tolist()
 
     data_max = []
@@ -21,7 +21,8 @@ def main():
         data_min.append(minimum)
         data_avg.append(avg)
 
-    batch_sizes = [16, 32, 64, 128, 256, 512, 1024]
+    # batch_sizes = [16, 32, 64, 128, 256, 512, 1024]
+    batch_sizes = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
     length = np.arange(len(batch_sizes))
 
     plt.plot(data_max, label='Maximum', color='red')
@@ -36,7 +37,7 @@ def main():
     plt.ylabel('MSE', fontsize=12, weight='bold')
     plt.legend()
     plt.tight_layout()
-    plt.savefig('./plots/error_var_seed.png')
+    plt.savefig('./plots/error_var_seed_full.png')
     plt.show()
 
 

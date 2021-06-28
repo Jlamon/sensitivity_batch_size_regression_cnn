@@ -117,7 +117,7 @@ def main():
 if __name__ == '__main__':
     data = main()
 
-    with open('results/batch_size_var.csv', mode='w') as file:
+    with open('results/batch_size_var_full.csv', mode='w') as file:
         file_writer = csv.writer(file)
 
         file_writer.writerow(['BS', 'MSE', 'TIME'])

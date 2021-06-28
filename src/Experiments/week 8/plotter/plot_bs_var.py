@@ -29,8 +29,15 @@ def main():
     x.append(curr_x)
     y.append(curr_y)
 
-    # ax = plt.axes()
-    #
+    ax = plt.axes()
+
+    for tick in ax.xaxis.get_major_ticks():
+        # tick.label1.set_fontsize(fontsize)
+        tick.label1.set_fontweight('bold')
+    for tick in ax.yaxis.get_major_ticks():
+        # tick.label1.set_fontsize(fontsize)
+        tick.label1.set_fontweight('bold')
+
     # ax.spines['bottom'].set_color('white')
     # ax.spines['top'].set_color('white')
     # ax.spines['right'].set_color('white')
@@ -47,12 +54,14 @@ def main():
 
     # plt.yscale('log')
 
-    # plt.title('Different Batch Sizes', fontsize=12, color='white')
-    plt.title('Different Batch Sizes', fontsize=12)
-    plt.xlabel('Epochs', fontsize=12)
-    plt.ylabel('Result', fontsize=12)
+    plt.yticks(fontsize=13)
+    plt.xticks(fontsize=13)
+
+    plt.xlabel('Epochs', fontsize=14, weight='bold')
+    plt.ylabel('Result', fontsize=14, weight='bold')
     plt.legend(loc="best", framealpha=0.3)
     # plt.savefig('plots/batch_size_var.png', transparent=True)
+    plt.tight_layout()
     plt.savefig('plots/batch_size_var.png')
     plt.show()
 

@@ -70,22 +70,44 @@ def main():
     std.append(curr_std)
     var.append(curr_var)
 
+    ax = plt.axes()
+
+    for tick in ax.xaxis.get_major_ticks():
+        # tick.label1.set_fontsize(fontsize)
+        tick.label1.set_fontweight('bold')
+    for tick in ax.yaxis.get_major_ticks():
+        # tick.label1.set_fontsize(fontsize)
+        tick.label1.set_fontweight('bold')
+
+    ax.spines['bottom'].set_color('white')
+    ax.spines['top'].set_color('white')
+    ax.spines['right'].set_color('white')
+    ax.spines['left'].set_color('white')
+    ax.xaxis.label.set_color('white')
+    ax.yaxis.label.set_color('white')
+    ax.tick_params(axis='x', colors='white')
+    ax.tick_params(axis='y', colors='white')
+
     # batch_sizes = [16, 32, 64, 128, 256, 512, 1024]
     batch_sizes = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
     length = np.arange(len(batch_sizes))
 
-    plt.plot(mean, marker='o', label='Mean')
-    plt.plot(median, marker='o', label='Median')
-    plt.plot(std, marker='o', label='Standard Deviation')
-    # plt.plot(var, marker='o', label='Variance')
+    # plt.plot(mean, marker='o', label='Mean')
+    # plt.plot(median, marker='o', label='Median')
+    # plt.plot(std, marker='o', label='Standard Deviation')
+    plt.plot(var, marker='o', label='Variance')
     plt.xticks(length, batch_sizes)
 
-    plt.xlabel('Different Batch Sizes', fontsize=12, weight='bold')
-    plt.ylabel('MSE', fontsize=12, weight='bold')
-    plt.legend()
+    plt.yticks(fontsize=11)
+    plt.xticks(fontsize=11)
+
+    plt.xlabel('Different Batch Sizes', fontsize=14, weight='bold')
+    plt.ylabel('MSE', fontsize=14, weight='bold')
+    plt.legend(framealpha=0.3)
 
     plt.tight_layout()
-    plt.savefig('./plots/scatter_sensitivity_extreme.png')
+    # plt.savefig('./plots/scatter_sensitivity.png')
+    plt.savefig('./plots/scatter_sensitivity_var_transparent.png', transparent=True)
     plt.show()
 
 

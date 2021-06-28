@@ -5,9 +5,9 @@ import math
 
 
 def main():
-    data = pd.read_csv('../results/results_batch_size.csv')
+    data = pd.read_csv('../results/batch_size_mean_full.csv')
 
-    prev_bs = 16
+    prev_bs = 2
     y = []
     curr_y = 0
     x = []
@@ -27,7 +27,8 @@ def main():
     y.append(curr_y)
     x.append(curr_x)
 
-    batch_sizes = [16, 32, 64, 128, 256, 512, 1024]
+    # batch_sizes = [16, 32, 64, 128, 256, 512, 1024]
+    batch_sizes = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
     length = np.arange(len(batch_sizes))
     width = 0.3
 
@@ -56,7 +57,7 @@ def main():
 
     # plt.savefig('./plots/barchart_batch_combined.png', transparent=True)
     plt.tight_layout()
-    plt.savefig('./plots/barchart_batch_combined.png')
+    plt.savefig('./plots/barchart_batch_combined_full.png')
     plt.show()
 
 

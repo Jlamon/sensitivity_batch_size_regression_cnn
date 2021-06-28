@@ -26,7 +26,8 @@ log_interval = 10
 
 def main():
     arr = []
-    batch_sizes = [16, 32, 64, 128, 256, 512, 1024]
+    # batch_sizes = [16, 32, 64, 128, 256, 512, 1024]
+    batch_sizes = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
 
     train = datasets.MNIST(root='../../../data', train=True, transform=Compose([
         torchvision.transforms.ToTensor(),
@@ -119,7 +120,7 @@ def main():
 if __name__ == '__main__':
     data = main()
 
-    with open('results/bs_mean_avg_seed.csv', mode='w') as file:
+    with open('results/bs_mean_avg_seed_full.csv', mode='w') as file:
         file_writer = csv.writer(file)
 
         file_writer.writerow(['BS', 'RUN_0', 'RUN_1', 'RUN_2', 'RUN_3', 'RUN_4', 'RUN_5', 'RUN_6', 'RUN_7', 'RUN_8', 'RUN_9'])
